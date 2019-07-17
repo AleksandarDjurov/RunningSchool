@@ -1,0 +1,78 @@
+.user-information-container {
+    margin: auto;
+}
+
+.link{
+    color: rgb(6, 114, 202) !important;
+}
+
+.card {
+    background-color: #fcfbfb;
+}
+
+.card-body {
+    width: 60%;
+    margin-left: 20%;
+}
+.page {
+    background: #3c435f;
+    height: 100%;    
+}
+/*----------*/
+.login-form {
+    width: 400px;
+    margin: 50px auto;
+}
+.logo_img{
+    width: 120px;
+}
+.img_space {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.account_text{
+    font-weight: 400;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.login-form form {
+    margin-bottom: 15px;
+    background: #ffffff;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-group
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}
+.username_input {
+    min-height: 55px !important;
+    background: url('/frontend/assets/img/Logo/email.png') no-repeat scroll 95% 50%;        
+}
+.password_input {
+    min-height: 55px !important;
+    background: url('/frontend/assets/img/Logo/lock.png') no-repeat scroll 95% 50%;        
+}
+.input_icon {
+    text-align: center;
+    white-space: nowrap;
+    background-color: #ffffff;
+    border-left: 0px ;    
+}
+.btn-submit {
+    background: #ebeaea;
+    color: #aba6a6;
+    font-size: 15px;
+    margin-left:30px !important ; 
+}
+.btn-submit:hover {
+    background: #dfdfdf;
+}

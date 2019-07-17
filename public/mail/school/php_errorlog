@@ -1,0 +1,7 @@
+[27-Jun-2019 03:35:55 CST6CDT] PHP Fatal error:  Uncaught phpmailerException: SMTP Error: The following recipients failed: future.syg1118@gmail.com in /home/runnersc/school_gym/public/mail/class.phpmailer.php:812
+Stack trace:
+#0 /home/runnersc/school_gym/public/mail/class.phpmailer.php(630): PHPMailer->SmtpSend('Date: Thu, 27 J...', '--b1_5089c9f736...')
+#1 /home/runnersc/school_gym/public/mail/class.phpmailer.php(575): PHPMailer->PostSend()
+#2 /home/runnersc/school_gym/public/mail/school/test.php(55): PHPMailer->Send()
+#3 {main}
+  thrown in /home/runnersc/school_gym/public/mail/class.phpmailer.php on line 812

@@ -1,0 +1,89 @@
+<div id="contactus" fxLayout="column">
+    <div id="contactus-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+        <div id="contactus-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img src="assets/images/logos/athletes.png">
+            </div>
+ 
+            <div class="title">CONTACT US</div>
+            <form name="contactusForm" [formGroup]="contactusForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+                novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="first_name" [(ngModel)]="model.first_name">
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <mat-error>
+                        First Name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="last_name" [(ngModel)]="model.last_name">
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <mat-error>
+                        Last Name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" [(ngModel)]="model.email">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="contactusForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="contactusForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mobile Phone</mat-label>
+
+                    <input matInput formControlName="phone" [(ngModel)]="model.phone">
+                    <mat-error>Mobile Phone is required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select formControlName="role" [(ngModel)]="model.role">
+                        <mat-option value="2"> School Administrator</mat-option>
+                        <mat-option value="4"> Personal Trainer</mat-option>
+                        <mat-option value="5"> Athelete</mat-option>
+                    </mat-select>
+                    <mat-error>Role is required!</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Bio</mat-label>
+                    <textarea matInput placeholder="Leave a comment" formControlName="comment"
+                        [(ngModel)]="model.comment"></textarea>
+                    <mat-error>Comment is required!</mat-error>
+                </mat-form-field>
+
+                <div class="terms" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-checkbox name="terms" aria-label="I read and accept" required>
+                        <span>I read and accept</span>
+                    </mat-checkbox>
+                    <a href="#">terms and conditions</a>
+                </div>
+
+                <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                    [disabled]="contactusForm.invalid">
+                    SEND CONTACT
+                </button>
+            </form>
+
+            <div class="contactus" fxLayout="column" fxLayoutAlign="center center">
+                <span class="text">Already have an account?</span>
+                <a class="link" [routerLink]="'/pages/auth/login'">Login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

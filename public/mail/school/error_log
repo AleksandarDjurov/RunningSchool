@@ -1,0 +1,5 @@
+[09-Apr-2016 15:32:44 UTC] PHP Notice:  Undefined variable: content in /home/motocleultimate1/public_html/clients/manhattan-foodies.com/public/mail/test/testemail.php on line 18
+[09-Apr-2016 15:32:44 UTC] PHP Notice:  Undefined variable: email in /home/motocleultimate1/public_html/clients/manhattan-foodies.com/public/mail/test/testemail.php on line 38
+[09-Apr-2016 15:39:59 UTC] PHP Notice:  Undefined variable: content in /home/motocleultimate1/public_html/clients/manhattan-foodies.com/public/mail/test/testemail.php on line 18
+[09-Apr-2016 15:39:59 UTC] PHP Notice:  Undefined variable: email in /home/motocleultimate1/public_html/clients/manhattan-foodies.com/public/mail/test/testemail.php on line 38
+[07-May-2016 05:23:10 UTC] PHP Warning:  trim() expects parameter 1 to be string, array given in /home/motocleultimate1/public_html/clients/manhattan-foodies.com/public/mail/class.phpmailer.php on line 484

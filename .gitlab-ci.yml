@@ -1,0 +1,26 @@
+# Before Script
+before_script:
+  - cp .env.example .env
+  - composer install
+  - php artisan key:generate
+
+# Services
+services:
+  - mysql:latest
+
+# Variables
+variables:
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_USER: homestead
+  MYSQL_PASSWORD: secret
+  MYSQL_DATABASE: homestead
+
+
+# PHP 7
+php:7:
+  image: chilio/laravel-dusk-ci:php-7.1
+  script:
+    - echo "Running PHPUnit Tests"
+    - php vendor/bin/phpunit --colors --debug  --coverage-text
+    - echo "Running dusk"
+    - php artisan dusk

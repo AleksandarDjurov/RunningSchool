@@ -1,0 +1,101 @@
+@media screen and (min-width: 576px) {
+    .clean-block.clean-hero {
+        min-height: 680px;
+    }    
+}
+
+.clean-block.clean-hero{
+    position:relative;
+    text-align:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    padding-bottom:0
+}
+.clean-block.clean-hero:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:currentColor;
+    z-index:1
+}
+.clean-block.clean-hero .text{
+    max-width:640px;
+    color:#fff;
+    z-index:2;
+    padding:40px 15px;
+    text-shadow:1px 1px 1px rgba(0,0,0,.15)
+}
+.clean-block.clean-hero h2{
+    margin-bottom:30px
+}
+
+.clean-block.clean-hero p{
+    font-size:18px;
+    margin-bottom:30px
+}
+.h2, h2 {
+    font-size: 2rem;
+}
+button, input {
+    overflow: visible;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+
+button, select {
+    text-transform: none;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+.btn-outline-light{
+    color:#f8f9fa;
+    border-color:#f8f9fa
+}
+
+.btn-outline-light:hover{
+    color:#212529;
+    background-color:#f8f9fa!important;
+    border-color:#f8f9fa!important
+}
+
+.btn-lg{
+    padding:.5rem 1rem;
+    font-size:1.25rem;
+    line-height:1.5;
+    border-radius:.3rem
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}

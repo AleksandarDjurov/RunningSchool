@@ -1,0 +1,127 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Loading..."
+  type="ball-scale-multiple">
+</ngx-spinner>
+
+<main class="page contact-us-page" style="margin-top: 15px">
+  <section class="clean-block clean-form dark">
+    <div class="container">
+      <div class="block-heading"></div>
+      <div class="card">
+        <div class="card-header alert-primary">
+          Contact Us
+        </div>
+        <div class="card-body" style="text-align: center">
+          <img src="../../frontend/assets/img/logo.png" alt="logo">
+
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="card">
+              <div class="card-body">
+                <div class="card-text">
+
+                  <div class="form-group row">
+                    <label for="addressId" class="col-md-3 col-sm-12 text-right col-form-label">First Name</label>
+                    <div class="col-md-9 col-sm-12">
+                      <input type="text" placeholder="First name" class="form-control" id="first_name" name="first_name"
+                        [(ngModel)]="model.first_name" #first_name="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && first_name.invalid }" required>
+                      <div [hidden]="first_name.valid || first_name.untouched">
+                        <small *ngIf="first_name.errors && first_name.errors.required"
+                          class="form-text text-left error-msg">first_name
+                          is required</small>
+                        <small *ngIf="first_name.errors && first_name.errors.pattern"
+                          class="form-text text-left error-msg">first_name
+                          is invalid</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="addressId" class="col-md-3 col-sm-12 text-right col-form-label">Last Name</label>
+                    <div class="col-md-9 col-sm-12">
+                      <input type="text" placeholder="Last name" class="form-control" id="last_name" name="last_name"
+                        [(ngModel)]="model.last_name" #last_name="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && last_name.invalid }" required>
+                      <div [hidden]="last_name.valid || last_name.untouched">
+                        <small *ngIf="last_name.errors && last_name.errors.required"
+                          class="form-text text-left error-msg">last_name
+                          is required</small>
+                        <small *ngIf="last_name.errors && last_name.errors.pattern"
+                          class="form-text text-left error-msg">last_name
+                          is invalid</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="addressId" class="col-md-3 col-sm-12 text-right col-form-label">Your
+                      <br>E-mail:</label>
+                    <div class="col-md-9 col-sm-12">
+                      <input type="email" placeholder="E-mail" class="form-control" id="email" name="email"
+                        [(ngModel)]="model.email" #email="ngModel"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
+                      <small *ngIf="f.submitted && email.invalid && email.errors.required"
+                        class="form-text text-left error-msg">Email is required</small>
+                      <small *ngIf="f.submitted && email.invalid && email.errors.pattern"
+                        class="form-text text-left error-msg">Email is invalid</small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="phone" class="col-md-3 col-sm-12 text-right col-form-label">Phone
+                      Number:</label>
+                    <div class="col-md-9 col-sm-12">
+                      <input type="text" class="form-control" id="phone" name="phone" [(ngModel)]="model.phone"
+                        #phone="ngModel" pattern="[0-9]{10}">
+                      <small *ngIf="f.submitted && phone.invalid && phone.errors.pattern"
+                        class="form-text text-left error-msg">Phone number is invalid</small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="addressId" class="col-md-3 col-sm-12 text-right col-form-label">I am a:</label>
+                    <div class="col-md-9 col-sm-12">
+                      <select class="form-control form-control-sm" name="role" [(ngModel)]="role" (change)="updateUI()"
+                        required>
+                        <option *ngFor="let user of userRoleList" [value]="user.value">{{ user.display }}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="comment" class="col-md-3 col-sm-12 text-right col-form-label">Message</label>
+                    <div class="col-md-9 col-sm-12">
+                      <textarea class="form-control" rows="4" placeholder="Comments or Instructions" id="comment"
+                        name="comment" [(ngModel)]="model.comment" #comment="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && comment.invalid }"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <button type="submit" name="submitted" value="true" class="btn btn-success btn-sm place-order"
+                      [disabled]='!f.form.valid'>
+                      <i class="fa fa-send-o"></i> Send Contact
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #modal_result let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Contact Us</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p >{{retResult}}</p>
+    </div>
+  </ng-template>
+</main>

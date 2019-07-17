@@ -1,0 +1,533 @@
+@import "src/@fuse/scss/fuse";
+@import "node_modules/angular-calendar/scss/angular-calendar";
+
+.cal-month-view {
+    .cal-header {
+        .cal-cell {
+            font-weight: 600;
+        }
+    }
+
+    .cal-day-cell {
+        color: black;
+
+        @include media-breakpoint(lg) {
+            min-height: 150px;
+        }
+
+        @include media-breakpoint(gt-lg) {
+            min-height: 200px;
+        }
+
+        &.cal-selected {
+            border: none;
+            @include mat-elevation(9);
+        }
+    }
+
+    .cal-open-day-events {
+        box-shadow    : inset 0 0 2px 0 rgba(0, 0, 0, 0.54);
+        padding       : 0;
+        display       : flex;
+        flex-direction: column;
+
+        >div {
+            padding        : 0 16px;
+            margin         : 8px 16px;
+            display        : flex;
+            flex-direction : row;
+            align-items    : center;
+            justify-content: flex-start;
+            @include mat-elevation(1);
+            transition: box-shadow 300ms ease;
+
+            &:first-of-type {
+                margin-top: 16px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 16px;
+            }
+
+            &:hover {
+                @include mat-elevation(3);
+            }
+
+            .cal-event {
+                top   : 0;
+                margin: 0;
+            }
+
+            mwl-calendar-event-title {
+                flex: 1;
+
+                .cal-event-title {
+                    display        : block;
+                    padding        : 21px 24px;
+                    line-height    : 1;
+                    text-decoration: none;
+                }
+            }
+
+            mwl-calendar-event-actions {
+
+                .cal-event-actions {
+                    display       : flex;
+                    flex-direction: row;
+                    align-items   : center;
+
+                    .cal-event-action {
+                        display    : block;
+                        line-height: 1;
+                        padding    : 8px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.cal-week-view {
+
+    .cal-header>b {
+        font-weight: 600;
+    }
+
+    .cal-event {
+        display       : flex;
+        flex-direction: row;
+        align-items   : center;
+
+        mwl-calendar-event-title {
+            display      : block;
+            overflow     : hidden;
+            text-overflow: ellipsis;
+            white-space  : nowrap;
+            flex         : 1;
+            order        : 0;
+
+            .cal-event-title {
+                display        : block;
+                line-height    : 1;
+                text-decoration: none;
+            }
+        }
+
+        mwl-calendar-event-actions {
+            order: 1;
+
+            .cal-event-actions {
+                display       : flex;
+                flex-direction: row;
+                align-items   : center;
+
+                .cal-event-action {
+                    display    : block;
+                    line-height: 1;
+                    padding    : 8px;
+                }
+            }
+        }
+    }
+}
+
+.cal-day-view {
+    .cal-time {
+        font-weight: 600;
+    }
+
+    .cal-event {
+        display       : flex;
+        flex-direction: row;
+
+        mwl-calendar-event-title {
+            display      : block;
+            overflow     : hidden;
+            text-overflow: ellipsis;
+            white-space  : nowrap;
+            flex         : 1;
+            order        : 0;
+
+            .cal-event-title {
+                display        : block;
+                height         : 26px;
+                line-height    : 26px;
+                text-decoration: none;
+            }
+        }
+
+        mwl-calendar-event-actions {
+            order: 1;
+
+            .cal-event-actions {
+                display       : flex;
+                flex-direction: row;
+                align-items   : center;
+
+                .cal-event-action {
+                    display    : block;
+                    line-height: 1;
+                    padding    : 4px;
+                }
+            }
+        }
+    }
+
+    .cal-hour-segment {
+
+        &:after,
+        &::after {
+            content: '' !important;
+        }
+    }
+}
+
+#calendar {
+
+    .header {
+        height             : 200px;
+        min-height         : 200px;
+        max-height         : 200px;
+        position           : relative;
+        background-size    : 100% auto;
+        background-position: 0 50%;
+        background-repeat  : no-repeat;
+        background-color   : #FAFAFA;
+        color              : #FFFFFF;
+
+        @include media-breakpoint(xs) {
+            height    : 164px;
+            min-height: 164px;
+            max-height: 164px;
+        }
+
+        &:before {
+            content   : '';
+            position  : absolute;
+            top       : 0;
+            right     : 0;
+            bottom    : 0;
+            left      : 0;
+            z-index   : 1;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        &.Jan {
+            background-image   : url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+
+        &.Feb {
+            background-image   : url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+
+        &.Mar {
+            background-image   : url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+
+        &.Apr {
+            background-image   : url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+
+        &.May {
+            background-image   : url('/assets/images/calendar/spring.jpg');
+            background-position: 0 40%;
+        }
+
+        &.Jun {
+            background-image   : url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+
+        &.Jul {
+            background-image   : url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+
+        &.Aug {
+            background-image   : url('/assets/images/calendar/summer.jpg');
+            background-position: 0 80%;
+        }
+
+        &.Sep {
+            background-image   : url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+
+        &.Oct {
+            background-image   : url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+
+        &.Nov {
+            background-image   : url('/assets/images/calendar/autumn.jpg');
+            background-position: 0 40%;
+        }
+
+        &.Dec {
+            background-image   : url('/assets/images/calendar/winter.jpg');
+            background-position: 0 85%;
+        }
+
+        .header-content {
+            height: 100%;
+
+            .header-top {
+                position: relative;
+                z-index : 2;
+
+                .logo {
+
+                    .logo-icon {
+                        margin-right: 16px;
+                    }
+
+                    .logo-text {
+                        font-size: 24px;
+                    }
+                }
+            }
+
+            .header-bottom {
+                position: relative;
+                z-index : 2;
+
+                .title {
+                    font-size  : 20px;
+                    min-width  : 160px;
+                    text-align : center;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .add-event-button {
+            position: absolute;
+            right   : 18px;
+            bottom  : -26px;
+            z-index : 10;
+        }
+    }
+
+    .content {
+        padding: 24px;
+    }
+}
+
+.cal-day-number {
+    color: black;
+}
+
+
+#course_cont {
+    min-height   : 200px;
+    max-width    : 500px;
+    border-radius: 4px;
+    overflow     : hidden;
+    transition   : box-shadow 200ms ease-in-out;
+    @include mat-elevation(1);
+
+    .course_header {
+        padding   : 16px 24px;
+        height    : 64px !important;
+        min-height: 64px !important;
+        max-height: 64px !important;
+
+        &.bg-1 {
+            background: mat-color($mat-blue, 500);
+        }
+
+        &.bg-2 {
+            background: mat-color($mat-green, 500);
+        }
+
+        &.bg-3 {
+            background: mat-color($mat-blue, 500);
+        }
+
+        &.bg-3 {
+            background: mat-color($mat-red, 500);
+        }
+
+        .category {
+            text-transform: capitalize;
+            text-align    : left;
+            font-weight   : 600;
+        }
+
+        .length {
+
+            .length-icon {
+                margin-right: 8px;
+            }
+
+            .min {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .course_content {
+        padding: 24px;
+        width: 93%;
+        margin: 0 auto;
+        max-height: 160px!important;
+        .h1 {
+            font-size : 16px;
+            text-align: center;
+        }
+    }
+
+    .footer {
+        padding   : 16px;
+        min-height: 208px !important;
+        box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+.course-left{
+    padding: 5px;
+    border: 2px solid black;
+}
+
+.schedule-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px auto;
+    background: #ffffff;
+    border: 1px dashed;
+    border-radius: 12px;
+    padding: 5px;
+    color: #1c8adb;
+    font-size: 12px;
+}
+
+.schedule-list .delete-file {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.schedule-list .delete-file img {
+    width: 30px;
+}
+
+.virtual-scroll-wrap {
+    width: 50%;
+    margin: auto;
+    min-width: 380px
+  }
+  
+  cdk-virtual-scroll-viewport { 
+    height: 100vh; 
+    li { 
+        height: 100px; 
+        list-style: none; 
+        border: 1px solid #ccc; 
+        margin: 10px 30px 
+    } 
+    .thumbnail-wrap { 
+        width: 100px; 
+        display: inline-block; 
+        img { 
+            height: 65px; 
+            margin: 18px 14px; 
+        } 
+    } 
+    .info-wrap 
+    { 
+        vertical-align: top; 
+        display: inline-block 
+    } 
+  }
+  
+  
+  @-webkit-keyframes lightSpeedIn {
+    from {
+      -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+      transform: translate3d(100%, 0, 0) skewX(-30deg);
+      opacity: 0
+    }
+  
+    60% {
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+      opacity: 1
+    }
+  
+    80% {
+      -webkit-transform: skewX(-5deg);
+      transform: skewX(-5deg)
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0)
+    }
+  }
+  
+  @keyframes lightSpeedIn {
+    from {
+      -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+      transform: translate3d(100%, 0, 0) skewX(-30deg);
+      opacity: 0
+    }
+  
+    60% {
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+      opacity: 1
+    }
+  
+    80% {
+      -webkit-transform: skewX(-5deg);
+      transform: skewX(-5deg)
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0)
+    }
+  }
+  
+  .lightSpeedIn {
+    -webkit-animation-name: lightSpeedIn;
+    animation-name: lightSpeedIn;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out
+  }
+  
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+  }
+
+  .content_item {
+    background: #ffffff;
+    opacity: 0.85;
+    width: 95%;
+    height: 95%;
+    min-height: 140px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border: 1px solid #041b80;
+    border-radius: 5%;
+    .h1 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .updated {
+        font-size: 16px;
+        font-weight: 600;                                
+        padding-top: 5px;
+    }
+}

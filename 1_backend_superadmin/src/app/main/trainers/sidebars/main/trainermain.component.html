@@ -1,0 +1,31 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24" fxLayout="row" fxLayoutAlign="start center">
+            <div class="nav material2">
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('all')"
+                        [ngClass]="{'active accent':filterBy ==='all'}">
+                        <span class="title">{{'NAV.All Schools'|translate}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div *ngFor="let szName of arrListSchoolName" class="nav-item" aria-label="frequently contacted"
+                    (click)="changeFilter(szName)">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ===szName}">
+                        <div class="title">{{szName}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / SIDEBAR CONTENT -->

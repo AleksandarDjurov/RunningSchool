@@ -1,0 +1,85 @@
+.page-footer.dark {
+    background-color: #2b2f31;
+}
+
+@media (min-width: 576px)
+{
+    .page-footer {
+        text-align: left;
+    }
+}
+.page-footer.dark h5 {
+    color: #fff;
+}
+.page-footer h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+@media (min-width: 768px){
+    .page-footer ul li {
+        position: relative;
+        padding-left: 10px;
+    }
+}
+
+.page-footer ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+
+@media (min-width: 768px){
+    .page-footer ul li:after, .page-footer ul li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 2px;
+        height: 6px;
+        border-radius: 2px;
+        background-color: #007bff;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }    
+}
+
+@media (min-width: 768px){
+    .page-footer ul li:before {
+        top: 9px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }    
+}
+
+@media (min-width: 768px){
+    .page-footer ul li:after {
+        top: 13px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+.page-footer .footer-copyright {
+    background-color: #fff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+    margin-top: 50px;
+    border: 1px solid #ededed;
+}
+
+.page-footer.dark .footer-copyright {
+    background-color: #222425;
+    border-color: #222425;
+}
+
+.page-footer .footer-copyright p {
+    margin: 10px;
+    color: #7d8288;
+}
+
+.page-footer.dark .footer-copyright p {
+    color: #ccc;
+}

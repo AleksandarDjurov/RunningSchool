@@ -1,0 +1,127 @@
+<div id="schools" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    school
+                </mat-icon>
+                <span *ngIf="globalVars.g_nDisplySchoolMode==1" class="logo-text h1"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Running Schools
+                </span>
+                <span *ngIf="globalVars.g_nDisplySchoolMode==0" class="logo-text h1"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Pending Schools
+                </span>
+                <span *ngIf="globalVars.g_nDisplySchoolMode==2" class="logo-text h1"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Rejected Schools
+                </span>
+                <span *ngIf="globalVars.g_nDisplySchoolMode==3" class="logo-text h1"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Deleted Schools
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a school">
+                </div>
+            </div>
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button style="visibility: hidden" [routerLink]="'/apps/e-commerce/schools/new'"
+                class="add-school-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button>
+            <!-- / ADD BUTTON -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="schools-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}"
+                fusePerfectScrollbar>
+                <!-- displayedColumns = ['ID', 'LOGO', 'SCHOOL_NAME', 'ADDRESS', 'EMAIL', 'PHONE', 'CREATE']; -->
+                <!-- ID Column -->
+                <ng-container matColumnDef="ID">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let school">
+                        <p class="text-truncate">{{school.id}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Image Column -->
+                <ng-container matColumnDef="LOGO">
+                    <mat-header-cell *matHeaderCellDef> School Logo </mat-header-cell>
+                    <mat-cell *matCellDef="let school">
+                        <img class="school-image" alt="No Image" [src]="urlHeader + school.logo_path" />
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="SCHOOL_NAME">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>School Name</mat-header-cell>
+                    <mat-cell *matCellDef="let school">
+                        <p class="text-truncate">{{school.name}}</p>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="ADDRESS">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-md>Address</mat-header-cell>
+                    <mat-cell *matCellDef="let school" fxHide fxShow.gt-md>
+                        <p class="text-truncate">{{school.address}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- displayedColumns = ['ID', 'LOGO', 'SCHOOL_NAME', 'ADDRESS', 'EMAIL', 'PHONE', 'CREATE']; -->
+                <!-- Quantity Column -->
+                <ng-container matColumnDef="EMAIL">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Email</mat-header-cell>
+                    <mat-cell *matCellDef="let school" fxHide fxShow.gt-sm>
+                        <p class="text-truncate">{{school.email}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Active Column -->
+                <ng-container matColumnDef="CREATE">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>Since Date</mat-header-cell>
+                    <mat-cell *matCellDef="let school" fxHide fxShow.gt-xs>
+                        <p class="text-truncate">{{school.created_at}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+                <mat-row *matRowDef="let school; columns: displayedColumns;" class="school" matRipple
+                    [routerLink]="'/apps/school/school/'+school.id">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

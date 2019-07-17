@@ -1,0 +1,87 @@
+<div id="price-tables" class="page-layout simple fullwidth">
+    <!-- HEADER -->
+    <div class="header" fxLayout="row" fxLayoutAlign="start start">
+        <div class="hero-text" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+            <!-- <h2>{{'SAMPLE.HELLO' | translate}}</h2> -->
+            <div class="h1">{{'TITLE'|translate}}</div>
+            <div class="h3">{{'TITLE_CONT'|translate}}</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" fxLayout="column">
+        <!-- PRICE TABLES -->
+        <div class="price-tables" fxLayout="row wrap" fxLayoutAlign="center center">
+            <div class="price-table style-3 mat-elevation-z12" fxLayout="column">
+                <div class="package-type">
+                    <div class="title">{{'LEVEL_2'|translate}}</div>
+                    <div class="subtitle">{{'LEVEL_2_DESC'|translate}}</div>
+                </div>
+                <div class="price primary" fxLayout="row" fxLayoutAlign="center start">
+                    <div class="currency">€</div>
+                    <div fxLayout="row" fxLayoutAlign="center end">
+                        <div class="value">59</div>
+                        <div class="period">{{'YEAR_PER_SCHOOL'|translate}}</div>
+                    </div>
+                </div>
+
+                <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+                    <ul>
+                        <li *ngFor="let package of packageList">
+                            <div class="term">{{package.name}}</div>
+                        </li>
+                        <!-- <li *ngFor="let package of packageList">
+                            <div class="term">{{'5_STAFF_T_SHIRT'|translate}}</div>
+                        </li> -->
+                    </ul>
+                </div>
+
+                <button *ngIf="purchased !== 'true'" mat-raised-button class="cta-button" (click)="BuyPackage()" color="accent">{{'PAY'|translate}}</button>
+                <button *ngIf="purchased === 'true'" mat-raised-button class="cta-button" (click)="ShowAlreadyBuy()" color="primary">{{'PAYED'|translate}}</button>
+            </div>
+
+        </div>
+        <!-- / PRICE TABLES -->
+
+        <div class="faq" fxLayout="row wrap">
+
+            <div class="title" fxFlex="100">{{'FAQ'|translate}}</div>
+
+            <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+                <div class="question">How does free trial work?</div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam nec augue tincidunt
+                    accumsan. In dignissim laoreet ipsum eu interdum.
+                </div>
+            </div>
+
+            <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+                <div class="question">Can I cancel any time?</div>
+                <div class="answer">
+                    Aliquam erat volutpat. Etiam luctus massa ex, at tempus tellus blandit quis. Sed quis neque tellus.
+                    Donec maximus ipsum in malesuada hendrerit.
+                </div>
+            </div>
+
+            <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+                <div class="question">What happens after my trial ended?</div>
+                <div class="answer">
+                    Aliquam erat volutpat. Etiam luctus massa ex, at tempus tellus blandit quis. Sed quis neque tellus.
+                    Donec maximus ipsum in malesuada hendrerit.
+                </div>
+            </div>
+
+            <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+                <div class="question">Can I have a discount?</div>
+                <div class="answer">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam nec augue tincidunt
+                    accumsan. In dignissim laoreet ipsum eu interdum.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

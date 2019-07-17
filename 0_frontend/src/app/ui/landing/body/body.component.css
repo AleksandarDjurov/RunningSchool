@@ -1,0 +1,143 @@
+.clean-block .block-heading{
+    padding-top:50px;
+    margin-bottom:40px;
+    text-align:center
+}
+.clean-block .block-heading p{
+    text-align:center;
+    max-width:420px;
+    margin:auto;
+    opacity:.7
+}
+.clean-block.dark .block-heading p{
+    opacity:.8
+}
+.clean-block .block-heading h1,.clean-block .block-heading h2,.clean-block .block-heading h3{
+    margin-bottom:1.2rem
+}
+.clean-block .block-content,.clean-block .content{
+    box-shadow:0 2px 10px rgba(0,0,0,.075);
+    background-color:#fff
+}
+.clean-block .block-content{
+    padding:40px
+}
+.clean-block.clean-hero{
+    position:relative;
+    text-align:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-pack:center;
+    justify-content:center;
+    padding-bottom:0
+}
+.clean-block.clean-hero:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:currentColor;
+    z-index:1
+}
+.clean-block.clean-hero .text{
+    max-width:640px;
+    color:#fff;
+    z-index:2;
+    padding:40px 15px;
+    text-shadow:1px 1px 1px rgba(0,0,0,.15)
+}
+.clean-block.clean-hero h2{
+    margin-bottom:30px
+}
+.clean-block.clean-hero p{
+    font-size:18px;
+    margin-bottom:30px
+}
+
+.btn-outline-primary{
+    color:#007bff;
+    border-color:#007bff
+}
+.btn-outline-primary:hover{
+    color:#fff!important;
+    background-color:#007bff!important;
+    border-color:#007bbb!important
+}
+.btn-outline-primary.focus,.btn-outline-primary:focus{
+    box-shadow:0 0 0 .2rem rgba(0,123,255,.5)
+}
+.btn-outline-primary.disabled,.btn-outline-primary:disabled{
+    color:#007bff;
+    background-color:transparent
+}
+.btn-outline-primary:not(:disabled):not(.disabled).active,.btn-outline-primary:not(:disabled):not(.disabled):active,.show>.btn-outline-primary.dropdown-toggle{
+    color:#fff!important;
+    background-color:#007bff;
+    border-color:#007bff
+}
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,.btn-outline-primary:not(:disabled):not(.disabled):active:focus,.show>.btn-outline-primary.dropdown-toggle:focus{
+    box-shadow:0 0 0 .2rem rgba(0,123,255,.5)
+}
+
+
+.clean-block{padding-bottom:50px}.clean-block.dark{background-color:#f6f6f6}.clean-block.blue{background-color:#007bff;color:#fff}.clean-block.blue input{border:none}.clean-block .block-heading{padding-top:50px;margin-bottom:40px;text-align:center}.clean-block .block-heading p{text-align:center;max-width:420px;margin:auto;opacity:.7}.clean-block.dark .block-heading p{opacity:.8}.clean-block .block-heading h1,.clean-block .block-heading h2,.clean-block .block-heading h3{margin-bottom:1.2rem}.clean-block .block-content,.clean-block .content{box-shadow:0 2px 10px rgba(0,0,0,.075);background-color:#fff}.clean-block .block-content{padding:40px}.clean-block.clean-hero{position:relative;text-align:center;background-size:cover;background-repeat:no-repeat;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;padding-bottom:0}.clean-block.clean-hero:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background-color:currentColor;z-index:1}.clean-block.clean-hero .text{max-width:640px;color:#fff;z-index:2;padding:40px 15px;text-shadow:1px 1px 1px rgba(0,0,0,.15)}.clean-block.clean-hero h2{margin-bottom:30px}.clean-block.clean-hero p{font-size:18px;margin-bottom:30px}
+.clean-pricing-item .features .feature{font-weight:600}.clean-pricing-item .features h4{text-align:center;font-size:18px;padding:5px}
+
+.icon-control-pause, .icon-control-play, .icon-control-rewind, .icon-control-start, .icon-credit-card, .icon-crop, .icon-cup, .icon-cursor, .icon-cursor-move, .icon-diamond, .icon-direction, .icon-directions, .icon-disc, .icon-dislike, .icon-doc, .icon-docs, .icon-drawer, .icon-drop, .icon-earphones, .icon-earphones-alt, .icon-emotsmile, .icon-energy, .icon-envelope, .icon-envelope-letter, .icon-envelope-open, .icon-equalizer, .icon-event, .icon-exclamation, .icon-eye, .icon-eyeglass, .icon-feed, .icon-film, .icon-fire, .icon-flag, .icon-folder, .icon-folder-alt, .icon-frame, .icon-game-controller, .icon-ghost, .icon-globe, .icon-globe-alt, .icon-graduation, .icon-graph, .icon-grid, .icon-handbag, .icon-heart, .icon-home, .icon-hourglass, .icon-info, .icon-key, .icon-layers, .icon-like, .icon-link, .icon-list, .icon-location-pin, .icon-lock, .icon-lock-open, .icon-login, .icon-logout, .icon-loop, .icon-magic-wand, .icon-magnet, .icon-magnifier, .icon-magnifier-add, .icon-magnifier-remove, .icon-map, .icon-menu, .icon-microphone, .icon-minus, .icon-mouse, .icon-music-tone, .icon-music-tone-alt, .icon-mustache, .icon-note, .icon-notebook, .icon-options, .icon-options-vertical, .icon-organization, .icon-paper-clip, .icon-paper-plane, .icon-paypal, .icon-pencil, .icon-people, .icon-phone, .icon-picture, .icon-pie-chart, .icon-pin, .icon-plane, .icon-playlist, .icon-plus, .icon-power, .icon-present, .icon-printer, .icon-puzzle, .icon-question, .icon-refresh, .icon-reload, .icon-rocket, .icon-screen-desktop, .icon-screen-smartphone, .icon-screen-tablet, .icon-settings, .icon-share, .icon-share-alt, .icon-shield, .icon-shuffle, .icon-size-actual, .icon-size-fullscreen, .icon-social-behance, .icon-social-dribbble, .icon-social-dropbox, .icon-social-facebook, .icon-social-foursqare, .icon-social-github, .icon-social-google, .icon-social-instagram, .icon-social-linkedin, .icon-social-pinterest, .icon-social-reddit, .icon-social-skype, .icon-social-soundcloud, .icon-social-spotify, .icon-social-steam, .icon-social-stumbleupon, .icon-social-tumblr, .icon-social-twitter, .icon-social-vkontakte, .icon-social-youtube, .icon-speech, .icon-speedometer, .icon-star, .icon-support, .icon-symbol-female, .icon-symbol-male, .icon-tag, .icon-target, .icon-trash, .icon-trophy, .icon-umbrella, .icon-user, .icon-user-female, .icon-user-follow, .icon-user-following, .icon-user-unfollow, .icon-vector, .icon-volume-1, .icon-volume-2, .icon-volume-off, .icon-wallet, .icon-wrench {
+    font-family: simple-line-icons;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.feature-box .icon {
+    font-size: 30px;
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 30px;
+    text-align: center;
+    color: #3b99e0;
+}
+
+.feature-box {
+    padding: 15px 20px 15px 70px;
+}
+
+@media (min-width: 576px){
+    .clean-block {
+        padding-bottom: 100px;
+    }    
+}
+
+.clean-block.dark {
+    background-color: #f6f6f6;
+}
+
+.clean-block.slider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clean-card .icons a {
+    font-size: 16px;
+    color: #3b99e0;
+    opacity: .75;
+    height: 2em;
+    line-height: 2;
+    text-align: center;
+    padding: .6em .4em;
+}
+
+

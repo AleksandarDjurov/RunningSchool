@@ -1,0 +1,85 @@
+<div class="mat-app-background basic-container" style="width: 90%; margin-left:
+  5%">
+  <h1>{{'TITLE'|translate}}</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Position Column -->
+
+    <!-- displayedColumns: string[] = ['id', 'course_name', 'from_date', 'to_date', 'status', 'course_content', 'actions']; -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> {{'No'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="course_name">
+      <th mat-header-cell *matHeaderCellDef> {{'Course_Name'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.course_name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="levels">
+      <th mat-header-cell *matHeaderCellDef> {{'Course_Levels'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.ln}} </td>
+    </ng-container>
+
+    <!-- From Date Column -->
+    <ng-container matColumnDef="from_date">
+      <th mat-header-cell *matHeaderCellDef> {{'From_Date'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{getDateOnly(element.from_date)}}
+      </td>
+    </ng-container>
+
+    <!-- To Date Column -->
+    <ng-container matColumnDef="to_date">
+      <th mat-header-cell *matHeaderCellDef> {{'To_Date'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{getDateOnly(element.to_date)}}
+      </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> {{'Status'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{getStatusName(element.status)}}
+      </td>
+    </ng-container>
+
+    <!-- To Date Column -->
+    <ng-container matColumnDef="course_content">
+      <th mat-header-cell *matHeaderCellDef> {{'Course_Content'|translate}}
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{getDescriptionBy50(element.course_content)}} </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="modify">
+      <th mat-header-cell *matHeaderCellDef> {{'Modify'|translate}} </th>
+      <td mat-cell *matCellDef="let element"><i class="material-icons"
+          (click)="editCourse(element)"> edit </i>
+      </ng-container>
+
+      <ng-container cdkColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef> {{'Delete'|translate}} </th>
+        <td mat-cell *matCellDef="let element"><i class="material-icons"
+            (click)="deleteCourse(element)"> delete </i>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+    </div>
+
+
+    <!-- ADD CONTACT BUTTON -->
+    <button mat-fab class="accent" id="add-contact-button" (click)="newCourse()"
+      aria-label="add course"
+      [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+      <mat-icon>library_add</mat-icon>
+    </button>
+    <!-- / ADD CONTACT BUTTON -->

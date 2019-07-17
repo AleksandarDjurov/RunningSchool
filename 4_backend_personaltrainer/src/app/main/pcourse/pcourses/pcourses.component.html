@@ -1,0 +1,110 @@
+<div id="s-courses" class="page-layout simple">
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <div fxLayout="column" fxLayoutAlign="left">
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="left" [@animateStagger]="{value:'50'}">
+                <div class="course" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33" [@animate]="{value:'*',params:{y:'100%'}}">
+                    <mat-form-field appearance="outline"
+                        class="category-selector">
+                        <mat-label>Quarter Course</mat-label>
+                        <mat-select [(ngModel)]="currentCategory"
+                            (selectionChange)="filterCoursesByCategory()">
+                            <mat-option [value]="'all'">
+                                All
+                            </mat-option>
+                            <mat-option *ngFor="let category of categories; let idx = index;"
+                                [value]='idx'>
+                                {{ category.course_name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div *ngIf="false" class="course" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33" [@animate]="{value:'*',params:{y:'100%'}}">
+                    <mat-form-field appearance="outline"
+                        class="category-selector">
+                        <mat-label>Level</mat-label>
+                        <mat-select [(ngModel)]="currentLevel"
+                            (selectionChange)="filterCoursesByLevel()">
+                            <mat-option [value]="'all'">
+                                All
+                            </mat-option>
+                            <mat-option *ngFor="let lv of levels"
+                                [value]="lv.id">
+                                {{ lv.level_name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- center" [ngClass]="'bg-1' + course.level_id"> -->
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+                <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+                        <div class="header" fxLayout="row" fxLayoutAlign="center
+                            center" [ngClass]="'bg-1'">
+                            <div *ngIf="courseMode.id === '0'" class="category" fxFlex>
+                                Level : {{course.level_id}}
+                            </div>
+                            <div *ngIf="courseMode.id !== '0'" class="category" fxFlex> Level : {{course.level_id}}  </div>
+                            <div class="length" fxLayout="row"
+                                fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">access_time</mat-icon>
+                                <div class="min">{{course.course_days}} days</div>
+                            </div>
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                            <div class="h1">Title : {{course.course_name}}</div>
+                            <div class="h1">Description : {{course.course_desc| slice:-30}}</div>
+                            <div *ngIf="getDates(course.course_dates) === 'Nothing'" class="h2">Period : {{getDates(course.course_dates)| slice:-30}}</div>
+                            <div *ngIf="getDates(course.course_dates) !== 'Nothing'" class="h1">Period : {{getDates(course.course_dates)| slice:-30}}</div>
+                            <div class="h1">Price : € {{course.price}}</div>
+                            <div class="h1">Seats : {{course.course_seats}} people</div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center
+                            center">
+                            <div class="content" fxLayout="column"
+                                fxLayoutAlign="center center" fxFlex="1 1 auto">
+                                <div class="row">
+                                    <button *ngIf="courseMode.id === '0'" 
+                                    mat-button color="accent"
+                                    [routerLink]="'/pcourses/calendar/' + courseMode.id + '/' + course.id">
+                                        Edit Timetable
+                                    </button>
+
+                                    <button *ngIf="courseMode.id == '1' || courseMode.id == '2' || courseMode.id == '3'"
+                                    mat-button color="accent" 
+                                    [routerLink]="'/pcourses/calendar/' + courseMode.id + '/' + course.id">
+                                        View Timetable
+                                    </button>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Activate State -->
+                                    <button *ngIf="courseMode.id == '1'" mat-button
+                                        color="accent"
+                                        [routerLink]="'/attend/1/0/' + course.id">
+                                        View Attendance
+                                    </button>
+
+                                    <button *ngIf="courseMode.id == '2'" mat-button
+                                        color="accent"
+                                        [routerLink]="'/attendsum/2/0/' + course.id">
+                                        View Feedback
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-courses" *ngIf="filteredCourses.length === 0">
+                    No courses found!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

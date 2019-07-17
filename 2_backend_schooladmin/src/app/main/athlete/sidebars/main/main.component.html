@@ -1,0 +1,29 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24" fxLayout="row" fxLayoutAlign="start center">
+            <div class="nav material2">
+                <div class="nav-item" aria-label="inbox">
+                    <div class="nav-item" style="margin-left: 30px;">
+                        <div class="title"><strong>My CourseList</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div *ngFor="let course of courses;let i = index;" class="nav-item" aria-label="frequently contacted" (click)="changeFilter(course.id)">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy === course.id}">
+                        <div class="title">{{course.name}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / SIDEBAR CONTENT -->

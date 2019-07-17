@@ -1,0 +1,86 @@
+<div id="t-courses" class="page-layout simple">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <mat-icon class="hero-icon">school</mat-icon>
+            <h2 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                {{myName}} 
+            </h2>
+            <h3 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                Course Activity
+            </h3>
+
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <div fxLayout="column" fxLayoutAlign="left">
+
+            <div class="courses" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+                <div class="course" *ngFor="let course of filteredCourses" fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33" [ngClass]="course.category" [@animate]="{value:'*',params:{y:'100%'}}">
+                    <div class="course-content" fxLayout="column" fxFlex="1 1 auto">
+                        <div class="header" fxLayout="row" fxLayoutAlign="center
+                            center" [ngClass]="'bg-1'">
+                            <div *ngIf="course.status ===1" class="category" fxFlex>
+                                Level : {{course.level_id}} ( Activated )
+                            </div>
+                            <div *ngIf="course.status ===2" class="category" fxFlex>
+                                Level : {{course.level_id}} ( Closed )
+                            </div>
+                            <div class="length" fxLayout="row"
+                                fxLayoutAlign="center center">
+                                <mat-icon class="length-icon s-20">access_time</mat-icon>
+                                <div class="min">{{course.course_days}} days</div>
+                            </div>
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                            <div class="h1">Title : {{course.course_name}}</div>
+                            <div class="h1">Description : {{course.course_desc| slice:-30}}</div>
+                            <div class="h1">Period : {{getDates(course.course_dates)| slice:-30}}</div>
+                            <div class="h1">Price : € {{course.price}}</div>
+                            <div class="h1">Seats : {{course.course_seats}} people</div>
+                            <div class="h1">Athletes : 20 people</div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+                            <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                                <div class="row">
+                                    <button mat-button color="accent" 
+                                    [routerLink]="'/scourses/calendar/' + course.status + '/' + course.id + '/' + course.level_id + '/' + course.trainer_id">
+                                        View Timetable
+                                    </button>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Activate State -->
+                                    <button mat-button
+                                        color="accent"
+                                        [routerLink]="'/attend/1/0/' + course.id">
+                                        View Attendance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="no-courses" *ngIf="filteredCourses.length === 0">
+                    No courses found!
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <button  id="add-contact-button" mat-fab color="primary" class="accent" (click)="goBack()" [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}" aria-label="Back">
+        Go Back
+    </button>
+</div>

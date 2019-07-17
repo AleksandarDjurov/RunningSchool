@@ -1,0 +1,741 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" loadingText="Loading..."
+  type="ball-scale-multiple">
+</ngx-spinner>
+
+<main class="page contact-us-page" style="margin-top: 15px">
+  <section class="clean-block clean-form dark">
+    <div class="container">
+
+      <div class="card">
+        <div class="card-header alert-primary">
+          School Register
+        </div>
+
+        <div class="card-body" style="text-align: center">
+          <form name="form" class="form-horizontal" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="row">
+              <div class="col-auto col-xs-12 col-sm-4 col-md-3" style="float: left;">
+                <h4><label for="school logo" style="text-align: left;">School Banner </label></h4>
+              </div>
+              <div style="margin-left: 10px" class="col-auto col-md-8 col-sm-12">
+                <div class="fileinput-new thumbnail" style="max-width: 400px;max-height: 200px;">
+                  <img style="border: #a09d9d 1px solid;" [src]="imgBannerURL" height="200" *ngIf="imgBannerURL">
+                  <img style="border: #a09d9d 1px solid;" src="../../frontend/assets/img/Logo/no_schban.png"
+                    height="200" *ngIf="!imgBannerURL">
+                </div>
+                <div> <input #fileBanner style="margin-top: 5px" type="file" accept='image/*'
+                    (change)="previewBanner(fileBanner.files)">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12" style="margin-top: 20px; border-bottom:1px solid darkgray;margin-bottom:10px;">
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div style="margin-left:10px" class="row">
+                  <h4><label for="school information"> School Information </label></h4>
+                </div>
+                <div class="row">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school logo" style="text-align: right;">School Logo </label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-12 col-xl-6 col-lg-6 col-xs-12">
+                    <div class="fileinput-new thumbnail" style="max-width: 200px;max-height: 200px;">
+                      <img style="border: #a09d9d 1px solid;" [src]="imgLogoURL" width="200" height="200"
+                        *ngIf="imgLogoURL">
+                      <img style="border: #a09d9d 1px solid;" src="../../frontend/assets/img/Logo/no_schmark.png"
+                        min-width="200" min-height="200" *ngIf="!imgLogoURL">
+                    </div>
+                    <div> <input #fileLogo style="margin-top: 5px" type="file" accept='image/*'
+                        (change)="previewLogo(fileLogo.files)"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School Name</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <input type="text" class="form-control" id="school_name" name="school_name"
+                        [(ngModel)]="model.school_name" #school_name="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_name.invalid }" required>
+                      <div [hidden]="school_name.valid || school_name.untouched">
+                        <small *ngIf="school_name.errors && school_name.errors.required"
+                          class="form-text text-left error-msg">School Name is required</small>
+                        <small *ngIf="school_name.errors && school_name.errors.pattern"
+                          class="form-text text-left error-msg">School Name is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Reference ASD</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <input type="text" class="form-control" id="reference_asd" name="reference_asd"
+                        [(ngModel)]="model.reference_asd" #reference_asd="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && reference_asd.invalid }" required>
+                      <div [hidden]="reference_asd.valid || reference_asd.untouched">
+                        <small *ngIf="reference_asd.errors && reference_asd.errors.required"
+                          class="form-text text-left error-msg">Reference ASD is required</small>
+                        <small *ngIf="reference_asd.errors && reference_asd.errors.pattern"
+                          class="form-text text-left error-msg">Reference ASD is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Company Code</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <input type="text" class="form-control" id="company_code" name="company_code"
+                        [(ngModel)]="model.company_code" #company_code="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && company_code.invalid }" required>
+                      <div [hidden]="company_code.valid || company_code.untouched">
+                        <small *ngIf="company_code.errors && company_code.errors.required"
+                          class="form-text text-left error-msg">Company Code is required</small>
+                        <small *ngIf="company_code.errors && company_code.errors.pattern"
+                          class="form-text text-left error-msg">Company Code is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-md-6 col-sm-12 col-xs-12">
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School State</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <!-- <select class="form-control" name="school_state" id="school_state"> -->
+                      <select id="school_state" name="school_state" class="form-control select2"
+                        [(ngModel)]="model.school_state" (change)="changeState()" #school_state="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_state.invalid }" required>
+                        <option value="1"> Northern Italy</option>
+                        <option value="2"> Central Italy</option>
+                        <option value="3"> Southern Italy</option>
+                      </select>
+
+                      <div [hidden]="school_state.valid || school_state.untouched">
+                        <small *ngIf="school_state.errors && school_state.errors.required"
+                          class="form-text text-left error-msg">School State is required</small>
+                        <small *ngIf="school_state.errors && school_state.errors.pattern"
+                          class="form-text text-left error-msg">School State is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School Region</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <select id="school_region" name="school_region" class="form-control select2"
+                        [(ngModel)]="model.school_region" (change)="changeRegion()" #school_region="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_region.invalid }" required>
+                        <option *ngFor="let region of arrListRegions" [value]="region.id">{{ region.region_name }}
+                        </option>
+                      </select>
+
+                      <div [hidden]="school_region.valid || school_region.untouched">
+                        <small *ngIf="school_region.errors && school_region.errors.required"
+                          class="form-text text-left error-msg">School Region is required</small>
+                        <small *ngIf="school_region.errors && school_region.errors.pattern"
+                          class="form-text text-left error-msg">School Region is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: right; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School Province</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <!-- <select class="form-control select2" id="school_province" name="school_province"></select> -->
+
+                      <select id="school_province" name="school_province" class="form-control select2"
+                        [(ngModel)]="model.school_province" (change)="changeProvince()" #school_province="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_province.invalid }" required>
+                        <option *ngFor="let province of arrListProvinces" [value]="province.id">
+                          {{ province.province_name }}
+                        </option>
+                      </select>
+
+                      <div [hidden]="school_province.valid || school_province.untouched">
+                        <small *ngIf="school_province.errors && school_province.errors.required"
+                          class="form-text text-left error-msg">School Province is required</small>
+                        <small *ngIf="school_province.errors && school_province.errors.pattern"
+                          class="form-text text-left error-msg">School Province is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School City</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <select id="school_city" name="school_city" class="form-control select2"
+                        [(ngModel)]="model.school_city" #school_city="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_city.invalid }" required>
+                        <option *ngFor="let city of arrListCities" [value]="city">{{ city }}
+                        </option>
+                      </select>
+
+                      <div [hidden]="school_city.valid || school_city.untouched">
+                        <small *ngIf="school_city.errors && school_city.errors.required"
+                          class="form-text text-left error-msg">School City is required</small>
+                        <small *ngIf="school_city.errors && school_city.errors.pattern"
+                          class="form-text text-left error-msg">School City is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: right; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School Address</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <input type="text" class="form-control" id="school_address" name="school_address"
+                        [(ngModel)]="model.school_address" #school_address="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_address.invalid }" required>
+                      <div [hidden]="school_address.valid || school_address.untouched">
+                        <small *ngIf="school_address.errors && school_address.errors.required"
+                          class="form-text text-left error-msg">School Address is required</small>
+                        <small *ngIf="school_address.errors && school_address.errors.pattern"
+                          class="form-text text-left error-msg">School Address is invalid</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">School Postal Code</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <!-- <input id="school_address" name="school_address" type="text" placeholder="Postal Code"
+                      class="form-control required" value="" /> -->
+
+                      <input type="text" class="form-control" id="postal_code" name="postal_code"
+                        [(ngModel)]="model.postal_code" #postal_code="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && postal_code.invalid }" required>
+                      <div [hidden]="postal_code.valid || postal_code.untouched">
+                        <small *ngIf="postal_code.errors && postal_code.errors.required"
+                          class="form-text text-left error-msg">Postal Code is required</small>
+                        <small *ngIf="postal_code.errors && postal_code.errors.pattern"
+                          class="form-text text-left error-msg">Postal Code is invalid</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_membership_type" style="text-align: right;">Membership Type</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <select id="school_membership_type" name="school_membership_type" class="form-control select2"
+                        [(ngModel)]="model.school_membership_type" #school_membership_type="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && school_membership_type.invalid }" required>
+                        <option value="active member"> active member</option>
+                        <option value="perspective member"> perspective member</option>
+                        <option value="alumni member"> alumni member</option>
+                      </select>
+
+                      <div [hidden]="school_membership_type.valid || school_membership_type.untouched">
+                        <small *ngIf="school_membership_type.errors && school_membership_type.errors.required"
+                          class="form-text text-left error-msg">School Membership Type is required</small>
+                        <small *ngIf="school_membership_type.errors && school_membership_type.errors.pattern"
+                          class="form-text text-left error-msg">School Membership Type is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!--line-->
+            </div>
+            <div class="col-sm-12" style="margin-top: 20px; border-bottom:1px solid darkgray;margin-bottom:10px;">
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div style="margin-left:10px" class="row">
+                  <h4><label for="school information"> Manager Information </label></h4>
+                </div>
+
+                <div class="row">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school logo" style="text-align: right;">User picture </label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-12 col-xl-6 col-lg-6 col-xs-12">
+                    <div class="fileinput-new thumbnail" style="max-width: 200px;max-height: 200px;">
+                      <img style="border: #a09d9d 1px solid;" [src]="imgUserURL" width="200" height="200"
+                        *ngIf="imgUserURL">
+                      <img style="border: #a09d9d 1px solid;" src="../../frontend/assets/img/Logo/no_schmark.png"
+                        width="200" height="200" *ngIf="!imgUserURL">
+                    </div>
+                    <div> <input #fileUserImg style="margin-top: 5px" type="file" accept='image/*'
+                        (change)="previewUserImage(fileUserImg.files)"></div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="first_name" style="text-align: right;">First Name</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <input type="text" class="form-control" id="first_name" name="first_name"
+                        [(ngModel)]="model.first_name" #first_name="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && first_name.invalid }" required>
+                      <div [hidden]="first_name.valid || first_name.untouched">
+                        <small *ngIf="first_name.errors && first_name.errors.required"
+                          class="form-text text-left error-msg">First Name is required</small>
+                        <small *ngIf="first_name.errors && first_name.errors.pattern"
+                          class="form-text text-left error-msg">First Name is invalid</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Last Name</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <input type="text" class="form-control" id="last_name" name="last_name"
+                        [(ngModel)]="model.last_name" #last_name="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && last_name.invalid }" required>
+                      <div [hidden]="last_name.valid || last_name.untouched">
+                        <small *ngIf="last_name.errors && last_name.errors.required"
+                          class="form-text text-left error-msg">Last Name is required</small>
+                        <small *ngIf="last_name.errors && last_name.errors.pattern"
+                          class="form-text text-left error-msg">Last Name is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Gender</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <select id="gender" name="gender" class="form-control select2" [(ngModel)]="model.gender"
+                        #gender="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gender.invalid }" required>
+                        <option value="1"> Male </option>
+                        <option value="2"> Female </option>
+                        <option value="3"> Other </option>
+                      </select>
+
+                      <div [hidden]="gender.valid || gender.untouched">
+                        <small *ngIf="gender.errors && gender.errors.required"
+                          class="form-text text-left error-msg">Gender is required</small>
+                        <small *ngIf="gender.errors && gender.errors.pattern"
+                          class="form-text text-left error-msg">Gender is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Birthday</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <!-- <input id="dob" name="dob" type="date" class="form-control" data-date-format="YYYY-MM-DD"
+                        placeholder="yyyy-mm-dd" /> -->
+
+                      <input type="date" class="form-control" id="dob" name="dob" data-date-format="YYYY-MM-DD"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="model.dob" #dob="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && dob.invalid }" required>
+
+                      <div [hidden]="dob.valid || dob.untouched">
+                        <small *ngIf="dob.errors && dob.errors.required" class="form-text text-left error-msg">Birthday
+                          is required</small>
+                        <small *ngIf="dob.errors && dob.errors.pattern" class="form-text text-left error-msg">Birthday
+                          is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">E-mail</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                      <input type="text" class="form-control" id="email"
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" [(ngModel)]="model.email"
+                        #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required>
+
+                      <div [hidden]="email.valid || email.untouched">
+                        <small *ngIf="email.errors && email.errors.required" class="form-text text-left error-msg">Email
+                          is required</small>
+                        <small *ngIf="email.errors && email.errors.pattern" class="form-text text-left error-msg">Email
+                          is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="form-group">
+                  <div class="row" style="margin-top: 20px">
+                    <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                      <label for="school_state" style="text-align: right;">Mobile Phone</label>
+                    </div>
+                    <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                      <!-- <input id="school_address" name="school_address" type="text" placeholder="Mobile Phone"
+                        class="form-control required" value="" /> -->
+
+                      <input type="text" class="form-control" id="mobile_phone" name="mobile_phone"
+                        [(ngModel)]="model.mobile_phone" #mobile_phone="ngModel" pattern="[0-9]{10}">
+
+                      <div [hidden]="mobile_phone.valid || mobile_phone.untouched">
+                        <small *ngIf="mobile_phone.errors && mobile_phone.errors.required"
+                          class="form-text text-left error-msg">Phone Number
+                          is required</small>
+                        <small *ngIf="mobile_phone.errors && mobile_phone.errors.pattern"
+                          class="form-text text-left error-msg">Phone Number
+                          is invalid</small>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="state" style="text-align: right;">State</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+
+                    <select id="state" name="state" class="form-control select2" [(ngModel)]="model.state"
+                      (change)="changeMState()" #state="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && state.invalid }" required>
+                      <option value="1"> Northern Italy</option>
+                      <option value="2"> Central Italy</option>
+                      <option value="3"> Southern Italy</option>
+                    </select>
+
+                    <div [hidden]="state.valid || state.untouched">
+                      <small *ngIf="state.errors && state.errors.required" class="form-text text-left error-msg">State
+                        is required</small>
+                      <small *ngIf="state.errors && state.errors.pattern" class="form-text text-left error-msg">State is
+                        invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Region</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <select id="sel_mregion" name="sel_mregion" class="form-control select2"
+                      [(ngModel)]="selectedMRegion" (change)="changeMRegion()">
+                      <option *ngFor="let region of arrListMRegions" [value]="region.id">{{ region.region_name }}
+                      </option>
+                    </select> -->
+
+                    <select id="region" name="region" class="form-control select2" [(ngModel)]="model.region"
+                      (change)="changeMRegion()" #region="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && region.invalid }" required>
+                      <option *ngFor="let region of arrListMRegions" [value]="region.id">{{ region.region_name }}
+                      </option>
+                    </select>
+
+                    <div [hidden]="region.valid || region.untouched">
+                      <small *ngIf="region.errors && region.errors.required"
+                        class="form-text text-left error-msg">Region is required</small>
+                      <small *ngIf="region.errors && region.errors.pattern" class="form-text text-left error-msg">Region
+                        is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Province</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <select class="form-control select2" id="school_region" name="school_region"></select> -->
+
+                    <select id="province" name="province" class="form-control select2" [(ngModel)]="model.province"
+                      (change)="changeMProvince()" #province="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && province.invalid }" required>
+                      <option *ngFor="let province of arrListMProvinces" [value]="province.id">
+                        {{ province.province_name }}
+                      </option>
+                    </select>
+
+                    <div [hidden]="province.valid || province.untouched">
+                      <small *ngIf="province.errors && province.errors.required"
+                        class="form-text text-left error-msg">Province is required</small>
+                      <small *ngIf="province.errors && province.errors.pattern"
+                        class="form-text text-left error-msg">Province is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">City</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <select class="form-control" name="school_state" id="school_state"></select> -->
+                    <!-- <select id="sel_mcity" name="sel_mcity" class="form-control select2" [(ngModel)]="selectedMCity">
+                      <option *ngFor="let city of arrListMCities" [value]="city">{{ city }}
+                      </option>
+                    </select> -->
+
+                    <select id="city" name="city" class="form-control select2" [(ngModel)]="model.city" #city="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required>
+                      <option *ngFor="let city of arrListMCities" [value]="city">{{ city }}
+                      </option>
+                    </select>
+
+                    <div [hidden]="city.valid || city.untouched">
+                      <small *ngIf="city.errors && city.errors.required" class="form-text text-left error-msg">City is
+                        required</small>
+                      <small *ngIf="city.errors && city.errors.pattern" class="form-text text-left error-msg">City is
+                        invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Address</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <input id="school_address" name="school_address" type="text" placeholder="Address"
+                      class="form-control required" value="" /> -->
+
+                    <input type="text" class="form-control" id="address" name="address" [(ngModel)]="model.address"
+                      #address="ngModel" [ngClass]="{'is-invalid': f.submitted && address.invalid }" required>
+                    <div [hidden]="address.valid || address.untouched">
+                      <small *ngIf="address.errors && address.errors.required"
+                        class="form-text text-left error-msg">Address is required</small>
+                      <small *ngIf="address.errors && address.errors.pattern"
+                        class="form-text text-left error-msg">Address is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Fiscal Code</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <input id="school_address" name="school_address" type="text" placeholder="Fiscal Code"
+                      class="form-control required" value="" /> -->
+
+                    <input type="text" class="form-control" id="fiscal_code" name="fiscal_code"
+                      [(ngModel)]="model.fiscal_code" #fiscal_code="ngModel"
+                      [ngClass]="{'is-invalid': f.submitted && fiscal_code.invalid }" required>
+                    <div [hidden]="fiscal_code.valid || fiscal_code.untouched">
+                      <small *ngIf="fiscal_code.errors && fiscal_code.errors.required"
+                        class="form-text text-left error-msg">Fiscal Code is required</small>
+                      <small *ngIf="fiscal_code.errors && fiscal_code.errors.pattern"
+                        class="form-text text-left error-msg">Fiscal Code is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Postal Code</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <input id="school_address" name="school_address" type="text" placeholder="Postal Code"
+                      class="form-control required" value="" /> -->
+
+                    <input type="text" class="form-control" id="postal" name="postal" [(ngModel)]="model.postal"
+                      #postal="ngModel" [ngClass]="{'is-invalid': f.submitted && postal.invalid }" required>
+                    <div [hidden]="postal.valid || postal.untouched">
+                      <small *ngIf="postal.errors && postal.errors.required"
+                        class="form-text text-left error-msg">Postal Code is required</small>
+                      <small *ngIf="postal.errors && postal.errors.pattern" class="form-text text-left error-msg">Postal
+                        Code is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px">
+                  <div class="col-auto col-xs-12 col-sm-3 col-md-4" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Vat number</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-6 col-lg-6 col-xs-9">
+                    <!-- <input id="school_address" name="school_address" type="text" placeholder="Vat number"
+                      class="form-control required" value="" /> -->
+
+                    <input type="text" class="form-control" id="vat_number" name="vat_number"
+                      [(ngModel)]="model.vat_number" #vat_number="ngModel"
+                      [ngClass]="{'is-invalid': f.submitted && vat_number.invalid }" required>
+                    <div [hidden]="vat_number.valid || vat_number.untouched">
+                      <small *ngIf="vat_number.errors && vat_number.errors.required"
+                        class="form-text text-left error-msg">Vat Number is required</small>
+                      <small *ngIf="vat_number.errors && vat_number.errors.pattern"
+                        class="form-text text-left error-msg">Vat Number is invalid</small>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col-sm-12" style="margin-top: 20px; border-bottom:1px solid darkgray;margin-bottom:10px;">
+            </div>
+
+            <!--More Information-->
+            <div class="row">
+              <div class="col-12 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div style="margin-left:10px" class="row">
+                  <h4><label for="school information"> More Information </label></h4>
+                </div>
+
+                <div class="row" style="margin-top: 5px">
+                  <div class="col-auto col-xs-12 col-sm-6 col-md-6" style="float: left; margin-left:10px">
+                    <label for="school_state" style="text-align: right;">Membership Type</label>
+                  </div>
+                  <div style="margin-left: 10px" class="col-auto col-sm-9 col-xl-9 col-lg-9 col-xs-9">
+
+                    <select id="membership_type" name="membership_type" class="form-control select2"
+                      [(ngModel)]="model.membership_type" #membership_type="ngModel"
+                      [ngClass]="{ 'is-invalid': f.submitted && membership_type.invalid }" required>
+                      <option value="active member"> active member</option>
+                      <option value="perspective member"> perspective member</option>
+                      <option value="alumni member"> alumni member</option>
+                    </select>
+
+                    <div [hidden]="membership_type.valid || membership_type.untouched">
+                      <small *ngIf="membership_type.errors && membership_type.errors.required"
+                        class="form-text text-left error-msg">Membership Type is required</small>
+                      <small *ngIf="membership_type.errors && membership_type.errors.pattern"
+                        class="form-text text-left error-msg">Membership Type is invalid</small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+              <div class="col-auto col-xs-6 col-sm-4 col-md-2" style="float: right; margin-left:10px">
+                <label for="school_state" style="text-align: right;">Bio <small>(brief intro) *</small></label>
+              </div>
+              <div style="margin-left: 10px" class="col-12">
+                <textarea name="bio" id="bio" class="form-control resize_vertical" rows="2"
+                  [(ngModel)]="model.bio"></textarea>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+              <div class="col-auto col-xs-12 col-sm-3 col-md-2" style="float: left; margin-left:10px">
+                <label for="school_state" style="text-align: left">Upload Area</label>
+              </div>
+
+              <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop
+                (onFileDropped)="uploadFile($event.target.files)">
+                <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+              </div>
+              <div class="files-list" *ngFor="let file of uploadfile_names;let i = index">
+                <p> {{ file }} </p>
+                <button class="delete-file" (click)="deleteAttachment(i)">
+                  <img src="../../frontend/assets/img/Recycle_Bin_Full.png">
+                </button>
+              </div>
+
+            </div>
+            <!--seperator -->
+
+            <div class="col-sm-12"
+              style="margin-top: 10px; margin-bottom: 10px; border-bottom:1px solid darkgray;margin-bottom:10px;">
+            </div>
+
+            <button type="submit" name="submitted" value="true" class="btn btn-success btn-sm place-order"
+              [disabled]='!f.form.valid'>
+              <i class="fa fa-send-o"></i> Send Registeration
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #modal_result let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">School Register</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{retResult}}</p>
+    </div>
+  </ng-template>
+</main>

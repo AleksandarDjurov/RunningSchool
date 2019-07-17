@@ -1,0 +1,24 @@
+.navbar {
+    background-color: rgb(65, 74, 104)!important;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgba(255,255,255,1);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+}
+
+.navbar-light .navbar-brand {
+    color: rgba(255,255,255,1);
+}
+
+.btn-outline-success {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(255,255,255,1);
+    border-color: rgba(255,255,255,1);
+}

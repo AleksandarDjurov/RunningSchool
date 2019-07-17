@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <navbar-brand style="margin-left: 20px">
+    <img href="#" src="frontend/assets/img/logo2.png" alt="logo">
+  </navbar-brand>
+
+  <button class="navbar-toggler btn btn-outline-primary" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+    (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarTogglerDemo02">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" [routerLink]="['/landing']" [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item" [routerLink]="['/contactus']" [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link">CONTACT US</a>
+      </li>
+    </ul>
+    <!-- <button *ngIf="globalVars._gShowStage > 0" class="btn btn-outline-success my-2 my-sm-0">REGISTER</button>
+    &nbsp;&nbsp;&nbsp;
+    <button *ngIf="globalVars._gShowStage > 1" class="btn btn-outline-success my-2 my-sm-0">LOG IN</button> -->
+
+    <button (click)="OnClickREG()" class="btn btn-outline-success my-2 my-sm-0">REGISTER</button>
+    &nbsp;&nbsp;&nbsp;
+    <button (click)="OnClickLOGIN()" class="btn btn-outline-success my-2 my-sm-0">LOG IN</button>
+
+  </div>
+</nav>

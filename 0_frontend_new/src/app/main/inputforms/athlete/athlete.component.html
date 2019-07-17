@@ -1,0 +1,286 @@
+<div id="athlete" fxLayout="column">
+    <!-- CONTENT -->
+    <div id="athlete-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+        <div class="vertical-stepper-wrapper">
+            <!-- VERTICAL STEPPER EXAMPLE -->
+            <mat-vertical-stepper class="mat-elevation-z4" [linear]="true">
+                <mat-step [stepControl]="verticalStepperStep1">
+                    <div class="row">
+                        <img mat-card-image style="border: #a09d9d 1px
+                            solid;" [src]="imgUserURL" width="200"
+                            height="200" *ngIf="imgUserURL">
+                        <img mat-card-image style="border: #a09d9d 1px
+                            solid;" src="assets/img/Logo/no_schmark.png"
+                            width="200" height="200" *ngIf="!imgUserURL">
+                    </div>
+                    <div class="row" style="text-align: right; margin-bottom: 10px">
+                        <input #fileUser style="margin-top: 5px" type="file" accept='image/*' (change)="previewUserImage(fileUser.files)" required>
+                    </div>
+
+                    <!-- <form fxLayout="column" [formGroup]="verticalStepperStep2"> -->
+                    <ng-template matStepLabel>Select a profile picture ( Athlete ) </ng-template>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button class="mr-8" mat-raised-button matStepperPrevious type="button" (click)="goBack()" color="accent">
+                            Go Back
+                        </button>
+
+                        <button mat-raised-button matStepperNext type="button" color="accent">
+                            Next
+                        </button>
+                    </div>
+                    <!-- </form> -->
+                </mat-step>
+
+                <mat-step [stepControl]="verticalStepperStep2">
+                    <form fxLayout="column" *ngIf="verticalStepperStep2"
+                        [formGroup]="verticalStepperStep2">
+                        <ng-template matStepLabel>Fill out your information</ng-template>
+                        <div fxFlex="1 0 auto" fxLayout="column">
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>First Name</mat-label>
+                                <input matInput [(ngModel)]="model.first_name" formControlName="first_name" required>
+                                <mat-error>First name is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput [(ngModel)]="model.last_name" formControlName="last_name" required>
+                                <mat-error>Last Name is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Gender</mat-label>
+                                <mat-select [(ngModel)]="model.gender" formControlName="gender">
+                                    <mat-option value="1">Male</mat-option>
+                                    <mat-option value="2">Female</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Nationality</mat-label>
+                                <input matInput [(ngModel)]="model.nationality" formControlName="nationality" required>
+                                <mat-error>Nationality is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Birthday</mat-label>
+                                <input matInput [(ngModel)]="model.dob" formControlName="birth_date" [matDatepicker]="picker" placeholder="Choose a date">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Email</mat-label>
+                                <input matInput [(ngModel)]="model.email" formControlName="email">
+                                <mat-error>Email is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Mobile Phone</mat-label>
+                                <input matInput [(ngModel)]="model.mobile_phone" formControlName="phone">
+                                <mat-error>Mobile Phone is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>BirthPlace</mat-label>
+                                <input matInput [(ngModel)]="model.birth_place" formControlName="birth_place" required>
+                                <mat-error>BirthPlace is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Fiscal Code</mat-label>
+                                <input matInput #fiscalCode [(ngModel)]="model.fiscal_code" formControlName="fiscalCode"  required>
+                                <mat-error>Fiscal Code is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Postal Code</mat-label>
+                                <input matInput #postal [(ngModel)]="model.postal" formControlName="postal"  required>
+                                <mat-error>Postal Code is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Vat Number</mat-label>
+                                <input matInput #vat_number [(ngModel)]="model.vat_number" formControlName="vat_number"  required>
+                                <mat-error>Vat Number is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Card Number</mat-label>
+                                <input matInput #card_number formControlName="card_number" [(ngModel)]="model.card_number"  required>
+                                <mat-error>Card Number is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="verticalStepperStep3">
+                    <form fxLayout="column" [formGroup]="verticalStepperStep3">
+                        <ng-template matStepLabel>Fill out your location</ng-template>
+                        <div fxFlex="1 0 auto" fxLayout="column">
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>State</mat-label>
+                                <mat-select [(ngModel)]="model.state" formControlName="state" (selectionChange)="partChanged($event)">
+                                    <mat-option value="1">Italy</mat-option>
+                                    <!-- <mat-option value="2"> Central Italy</mat-option>
+                                        <mat-option value="3"> Southern Italy</mat-option> -->
+                                </mat-select>
+                                <mat-error>State is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Region</mat-label>
+                                <mat-select [(ngModel)]="model.region" formControlName="region" (selectionChange)="regionChanged($event)">
+                                    <mat-option *ngFor="let region of arrListMRegions" [value]="region.id">
+                                        {{ region.region_name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>Region is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Province</mat-label>
+                                <mat-select [(ngModel)]="model.province" formControlName="province" (selectionChange)="provinceChanged($event)">
+                                    <mat-option *ngFor="let province of arrListMProvinces" [value]="province.id">
+                                        {{ province.province_name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>Province is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>City</mat-label>
+                                <mat-select [(ngModel)]="model.city" formControlName="city">
+                                    <mat-option *ngFor="let city of arrListMCities" [value]="city">{{ city }} </mat-option>
+                                </mat-select>
+                                <mat-error>City is required!</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Address</mat-label>
+                                <input matInput [(ngModel)]="model.address" formControlName="address" required>
+                                <mat-error>Address is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="verticalStepperStep4">
+                    <form fxLayout="column" [formGroup]="verticalStepperStep4">
+                        <ng-template matStepLabel>Fill out extra information</ng-template>
+                        <div fxFlex="1 0 auto" fxLayout="column">
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Membership Type</mat-label>
+                                <mat-select
+                                    [(ngModel)]="model.membership_type"
+                                    formControlName="membership_type">
+                                    <mat-option value="1">Active Member</mat-option>
+                                    <mat-option value="2">Perspective Member</mat-option>
+                                    <mat-option value="3">Alumni Member</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Certified Type</mat-label>
+                                <mat-select [(ngModel)]="model.certified_type" formControlName="certified_type">
+                                    <mat-option value="1">Certified Type 1</mat-option>
+                                    <mat-option value="2">Certified Type 2</mat-option>
+                                    <mat-option value="3">Certified Type 3</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline" fxFlex="100">
+                                <mat-label>Bio</mat-label>
+                                <textarea matInput placeholder="Leave a comment" [(ngModel)]="model.bio" formControlName="bio"></textarea>
+                                <mat-error>Comment is required!</mat-error>
+                            </mat-form-field>
+
+                            <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event.target.files)">
+                                <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+                            </div>
+                            <div class="files-list" *ngFor="let file of uploadfile_names;let i= index">
+                                <p> {{ file }} </p>
+                                <button class="delete-file" (click)="deleteAttachment(i)">
+                                    <img src="assets/img/Recycle_Bin_Full.png">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="verticalStepperStep5">
+                    <form fxLayout="column"
+                        [formGroup]="verticalStepperStep5">
+                        <ng-template matStepLabel>Fill your security information</ng-template>
+                        <div fxFlex="1 0 auto" fxLayout="column">
+                            <mat-form-field>
+                                <input matInput type="password" placeholder="Password" formControlName="password" (input)="onPasswordInput()">
+                                <mat-error *ngIf="verticalStepperStep5.controls['password'].errors?.required">Password is required</mat-error>
+                                <mat-error *ngIf="verticalStepperStep5.controls['password'].errors?.minlength">Password must have at least {{minPw}} characters</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput type="password" placeholder="Confirm password" formControlName="confirm" (input)="onPasswordInput()">
+                                <mat-error *ngIf="verticalStepperStep5.controls['confirm'].errors?.required">Please confirm your password</mat-error>
+                                <mat-error *ngIf="verticalStepperStep5.controls['confirm'].invalid && !verticalStepperStep5.controls['confirm'].errors?.required">Passwords don't match</mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <div fxLayout="row" fxLayoutAlign="center center">
+                            <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                                Previous
+                            </button>
+                            <button mat-raised-button matStepperNext type="button" color="accent">
+                                Next
+                            </button>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <div class="h2 m-16" fxLayout="row" fxLayoutAlign="center center">
+                        Thank you for filling out !
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <button class="mr-8" mat-raised-button matStepperPrevious type="button" color="accent">
+                            Previous
+                        </button>
+                        <button mat-raised-button type="button" color="accent" (click)="sendRegister()">
+                            Send Register
+                        </button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+            <!-- / VERTICAL STEPPER EXAMPLE -->
+        </div>
+    </div>
+    <!-- / CONTENT -->
+</div>

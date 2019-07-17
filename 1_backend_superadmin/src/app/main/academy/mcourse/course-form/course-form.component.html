@@ -1,0 +1,89 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+
+        <!-- <mat-toolbar-row class="toolbar-bottom py-16" fxLayout="column" fxLayoutAlign="center center">
+            <div class="contact-name mt-8">{{course.course_name}} </div>
+        </mat-toolbar-row> -->
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 pb-0 m-0" fusePerfectScrollbar>
+        <form [formGroup]="courseForm">
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Course Name</mat-label>
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <input name="course_name" formControlName="course_name" matInput required>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>From date</mat-label>
+                    <input matInput [matDatepicker]="fromDatePicker" name="from_date" formControlName="from_date" required >
+                    <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #fromDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>To date</mat-label>
+                    <input matInput [matDatepicker]="toDatePicker" name="to_date" formControlName="to_date" required >
+                    <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #toDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field appearance="outline" fxFlex>
+                    <mat-label>Description</mat-label>
+                    <mat-icon matSuffix class="secondary-text">comment</mat-icon>
+                    <textarea mat-maxlength="250" rows="4" name="course_content" formControlName="course_content" matInput required></textarea>
+                </mat-form-field>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+               <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Select Status</mat-label>
+                    <select *ngIf="action === 'edit'" name="status" matNativeControl formControlName="status" required>                       
+                        <option value="0">Pending</option>
+                        <option value="1">Active</option>
+                        <option value="2">Reject</option>
+                        <option value="3">Delete</option>
+                    </select>
+                    <select *ngIf="action !== 'edit'" name="status" matNativeControl formControlName="status" required>                       
+                        <option value="0">Pending</option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button *ngIf="action !== 'edit'"
+                mat-button
+                class="save-button"                
+                (click)="matDialogRef.close(['new',courseForm])"
+                [disabled]="courseForm.invalid"
+                aria-label="SAVE">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'"
+                mat-button
+                class="save-button"                
+                (click)="matDialogRef.close(['save',courseForm])"
+                [disabled]="courseForm.invalid"
+                aria-label="SAVE">
+            SAVE
+        </button>
+
+    </div>
+</div>

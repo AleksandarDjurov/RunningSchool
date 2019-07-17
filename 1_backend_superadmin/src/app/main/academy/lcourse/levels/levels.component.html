@@ -1,0 +1,54 @@
+<div class="mat-app-background basic-container" style="width: 90%; margin-left:5%">
+  <h1><strong>{{_Service.course_name}}</strong> {{'TITLE'|translate}}</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> {{'No'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- displayedColumns: string[] = ['id', 'level_name', 'created_at', 'level_content', 'modify', 'remove']; -->
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="level_name">
+      <th mat-header-cell *matHeaderCellDef> {{'Course_Name'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.level_name}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef> {{'CreatedDate'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{getDateOnly(element.created_at)}} </td>
+    </ng-container>
+
+    <!-- From Date Column -->
+    <ng-container matColumnDef="level_content">
+      <th mat-header-cell *matHeaderCellDef> {{'Level_Content'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{getDescriptionBy50(element.level_content)}}
+      </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="modify">
+      <th mat-header-cell *matHeaderCellDef> {{'Modify'|translate}} </th>
+      <td mat-cell *matCellDef="let element"><i class="material-icons"
+          (click)="editLevel(element)"> edit </i>
+      </ng-container>
+
+      <ng-container cdkColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef> {{'Delete'|translate}} </th>
+        <td mat-cell *matCellDef="let element"><i class="material-icons"
+            (click)="deleteLevel(element)"> delete </i>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+
+    <!-- ADD CONTACT BUTTON -->
+    <button mat-fab class="accent" id="add-contact-button" (click)="newLevel()"
+      aria-label="add course"
+      [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+      <mat-icon>library_add</mat-icon>
+    </button>
+    <!-- / ADD CONTACT BUTTON -->

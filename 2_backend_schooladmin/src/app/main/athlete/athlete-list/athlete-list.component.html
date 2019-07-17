@@ -1,0 +1,96 @@
+
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="checkbox">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <mat-checkbox [(ngModel)]="checkboxes[athlete.id]"
+                (ngModelChange)="onSelectedChange(athlete.id)"
+                (click)="$event.stopPropagation()">
+            </mat-checkbox>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="avatar">
+        <mat-header-cell *matHeaderCellDef>Picture</mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <img class="avatar" *ngIf="athlete.avatar" [alt]="athlete.avatar"
+                [src]="urlHeader+athlete.avatar" />
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <p class="text-truncate font-weight-600">{{athlete.athlete_first_name}} {{athlete.athlete_last_name}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <p *ngIf="athlete.sex==='1'" class="text-truncate font-weight-600">Male</p>
+            <p *ngIf="athlete.sex==='2'" class="text-truncate font-weight-600">Female</p>
+            <p *ngIf="athlete.sex==='3'" class="text-truncate font-weight-600">Other</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="mail">
+        <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <p class="text-truncate font-weight-600"> {{athlete.mail}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Phone Mobile</mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <p class="text-truncate font-weight-600"> {{athlete.phone}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pay_amount">
+        <mat-header-cell *matHeaderCellDef>PayAmount (€)</mat-header-cell>
+        <mat-cell *matCellDef="let athlete" fxHide fxShow.gt-sm>
+            <p class="text-truncate font-weight-600">€ {{athlete.pay_amount}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="since_date">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Since Date</mat-header-cell>
+        <mat-cell *matCellDef="let athlete" fxHide fxShow.gt-sm>
+            <p class="text-truncate font-weight-600">{{athlete.created_at}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Buttons Column -->
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let athlete">
+            <div fxFlex="row" fxLayoutAlign="end center">
+
+                <button mat-icon-button [matMenuTriggerFor]="moreMenu"
+                    aria-label="More"
+                    (click)="$event.stopPropagation();">
+                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                </button>
+
+                <mat-menu #moreMenu="matMenu">
+                    <button mat-menu-item aria-label="remove"
+                        (click)="deleteContact(athlete)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Remove</span>
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let athlete; columns: displayedColumns;"
+        class="contact" [ngClass]="{'accent-50':checkboxes[athlete.id]}" [routerLink]="'/athlete/'+ athlete.user_id + '/' + currentCourseID + '/' + athlete.id"  matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+</mat-table>

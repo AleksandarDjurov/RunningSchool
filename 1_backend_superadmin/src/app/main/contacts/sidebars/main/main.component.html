@@ -1,0 +1,48 @@
+<div class="sidebar-content">
+
+    <div class="card">
+
+        <!-- SIDEBAR HEADER -->
+        <div class="header p-24" fxLayout="row" fxLayoutAlign="start center">
+            <div class="nav material2">
+                <div class="nav-item" aria-label="inbox">
+                    <a class="nav-link" matRipple (click)="changeFilter('all')"
+                        [ngClass]="{'active accent':filterBy ==='all'}">
+                        <span class="title">{{'NAV.All Contacts'|translate}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- / SIDEBAR HEADER -->
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content py-16" fusePerfectScrollbar>
+            <div class="nav material2">
+                <div class="nav-item" aria-label="frequently contacted" (click)="changeFilter('2')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='2'}">
+                        <div class="title">{{'NAV.School Administrators'|translate}}</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="starred" (click)="changeFilter('3')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='3'}">
+                        <div class="title">{{'NAV.School Technical Managers'|translate}}</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="personal contacted" (click)="changeFilter('4')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='4'}">
+                        <div class="title">{{'NAV.Personal Trainers'|translate}}</div>
+                    </a>
+                </div>
+
+                <div class="nav-item" aria-label="athlete contacted" (click)="changeFilter('5')">
+                    <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='5'}">
+                        <div class="title">{{'NAV.Athletes'|translate}}</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / SIDEBAR CONTENT -->

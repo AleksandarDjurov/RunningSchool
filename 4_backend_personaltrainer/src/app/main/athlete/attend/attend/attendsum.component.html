@@ -1,0 +1,69 @@
+<div class="mat-app-background basic-container" style="width:90%;
+  margin-left:5%">
+  <h1 style="text-align: center"> <strong>{{'TITLE_FEED'|translate}}</strong></h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- displayedColumns: string[] = ['id', 'course_name', 'from_date', 'to_date', 'status', 'course_content', 'actions']; -->
+    <ng-container matColumnDef="id">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> {{'No'|translate}} </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.attend_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="avatar">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Picture </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> <img class="avatar" *ngIf="element.pic" [alt]="element.pic" [src]="urlHeader+element.pic"/> </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> {{'Course_Name'|translate}} </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Total </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.total}} days</td>
+    </ng-container>
+
+    <ng-container matColumnDef="present">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Present </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.present}} days</td>
+    </ng-container>
+
+    <ng-container matColumnDef="late">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Late </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.late}} days</td>
+    </ng-container>
+
+    <ng-container matColumnDef="absent">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Absent </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.absent}} days</td>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Score </th>
+      <td mat-cell *matCellDef="let element"> 
+        <app-rating [rating]='element.score' [itemId]='element.attend_id'
+        (ratingClick)='ratingComponentClick($event)'></app-rating> 
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef> Score ( max : 5)</th>
+      <td mat-cell *matCellDef="let element"> {{element.score}}</td>
+    </ng-container> -->
+    <ng-container matColumnDef="review">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Review </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> {{element.review}}</td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="modify">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> {{'Modify'|translate}} </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"><i class="material-icons"
+          (click)="editFeedback(element)"> edit </i></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

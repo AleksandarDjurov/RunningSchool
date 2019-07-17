@@ -1,0 +1,74 @@
+<div class="mat-app-background basic-container" style="width: 90%;
+  margin-left:5%">
+  <h1 style="text-align: center"><strong>'{{schoolName}}'</strong>
+    {{'TITLE'|translate}}</h1>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> {{'No'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="avatar">
+      <th style="text-align: center" mat-header-cell *matHeaderCellDef> Picture
+      </th>
+      <td style="text-align: center" mat-cell *matCellDef="let element"> <img
+          class="avatar" *ngIf="element.pic" [alt]="element.pic"
+          [src]="urlHeader+element.pic" /> </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> {{'Name'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.first_name}}
+        {{element.last_name}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> {{'Email'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> {{'Phone'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobile_phone}} </td>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> {{'Address'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+
+    <!-- From Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> {{'Date_Since'|translate}} </th>
+      <td mat-cell *matCellDef="let element">
+        {{getDateOnly(element.created_at)}}
+      </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="courseview">
+      <th mat-header-cell *matHeaderCellDef> {{'ViewCourese'|translate}} </th>
+      <td mat-cell *matCellDef="let element"><i class="material-icons"
+          (click)="viewCourse(element)"> edit </i></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Copyright 2018 Google Inc. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</div>
+
+<!-- ADD CONTACT BUTTON -->
+<button mat-fab class="accent" id="add-contact-button" (click)="goBack()"
+  aria-label="add course"
+  [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+  <mat-icon>arrow_back_ios</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->

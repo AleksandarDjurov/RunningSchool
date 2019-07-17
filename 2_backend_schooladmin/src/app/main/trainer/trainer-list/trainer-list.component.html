@@ -1,0 +1,168 @@
+<div id="trainer-list" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    school
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Personal Trainers
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <div class="search-wrapper mx-32 mx-md-0">
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon>search</mat-icon>
+                    <input #filter placeholder="Search for a trainer">
+                </div>
+            </div>
+            <!-- / SEARCH -->
+
+            <!-- ADD BUTTON -->
+            <button mat-raised-button style="visibility: hidden" class="add-school-button fuse-white mt-24 mt-md-0">
+                <span>ADD NEW PRODUCT</span>
+            </button>
+            <!-- / ADD BUTTON -->
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card">
+            <mat-table class="schools-table" #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}"
+                fusePerfectScrollbar>
+
+                <!-- Checkbox Column -->
+                <!-- <ng-container matColumnDef="checkbox">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let trainer">
+                        <mat-checkbox [(ngModel)]="checkboxes[trainer.id]" (ngModelChange)="onSelectedChange(trainer.id)"
+                            (click)="$event.stopPropagation()">
+                        </mat-checkbox>
+                    </mat-cell>
+                </ng-container> -->
+
+                <!-- Avatar Column -->
+                <ng-container matColumnDef="avatar">
+                    <mat-header-cell *matHeaderCellDef>Picture</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer">
+                        <img class="avatar" *ngIf="trainer.pic" [alt]="trainer.pic" [src]="urlHeader+trainer.pic" />
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer">
+                        <p class="text-truncate font-weight-600">{{trainer.first_name}} {{trainer.last_name}}</p>
+                    </mat-cell>
+                </ng-container>
+
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="role">
+                    <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer">
+                        <p class="text-truncate font-weight-600">{{trainer.role_name}}</p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Email</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer" fxHide fxShow.gt-sm>
+                        <p class="email text-truncate">
+                            {{trainer.email}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Phone Column -->
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Phone</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer" fxHide fxShow.gt-md>
+                        <p class="phone text-truncate">
+                            {{trainer.mobile_phone}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Job Title Column -->
+                <ng-container matColumnDef="comment">
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>Comments</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer" fxHide fxShow.gt-lg>
+                        <p class="job-title text-truncate">
+                            {{trainer.bio}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Company Column -->
+                <ng-container matColumnDef="company">
+                    <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-lg>Since Date</mat-header-cell>
+                    <mat-cell *matCellDef="let trainer" fxHide fxShow.gt-lg>
+                        <p class="company text-truncate">
+                            {{trainer.created_at}}
+                        </p>
+                    </mat-cell>
+                </ng-container>
+
+                <!-- Buttons Column -->
+                <ng-container matColumnDef="buttons">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let trainer">
+                        <div fxFlex="row" fxLayoutAlign="end center">
+                            <!-- <button mat-icon-button (click)="$event.stopPropagation();toggleStar(contact.id)"
+                                aria-label="Toggle star">
+                                <mat-icon class="amber-fg" *ngIf="user.starred.includes(contact.id)">star</mat-icon>
+                                <mat-icon class="secondary-text" *ngIf="!user.starred.includes(contact.id)">star_border</mat-icon>
+                            </button> -->
+
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                (click)="$event.stopPropagation();">
+                                <mat-icon class="secondary-text">more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #moreMenu="matMenu">
+                                <button mat-menu-item aria-label="remove" (click)="deleteTrainer(trainer)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Remove</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <!-- <mat-row *matRowDef="let trainer; columns: displayedColumns;" class="trainer" (click)="editTrainer(trainer)"
+                    [ngClass]="{'accent-50':checkboxes[trainer.id]}" matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+                </mat-row> -->
+
+                <mat-row *matRowDef="let trainer; columns: displayedColumns;" class="trainer" matRipple
+                    [routerLink]="'/trainer/'+trainer.id">
+                </mat-row>
+
+            </mat-table>
+
+            <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+
+        </div>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

@@ -1,0 +1,19 @@
+@import "src/@fuse/scss/fuse";
+
+table {
+  width: 100%;
+}
+
+#add-contact-button {
+  position: fixed;
+  bottom  : 12px;
+  right   : 12px;
+  padding : 0;
+  z-index : 99;
+
+  @include media-breakpoint('xs') {
+    position: sticky;
+    top     : calc(100vh - 120px);
+    bottom  : auto;
+  }
+}

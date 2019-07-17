@@ -1,0 +1,40 @@
+<div class="dialog-content-wrapper2">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()"
+                aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+        <form name="eventForm" [formGroup]="eventForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Score</mat-label>
+                <input matInput hidden name="score" formControlName="score" [(ngModel)]='score' required>
+                <app-rating [rating]='score' [itemId]='1'
+                    (ratingClick)='ratingComponentClick($event)'></app-rating>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Review</mat-label>
+                <textarea matInput placeholder="Leave a feedback" name="review"
+                    formControlName="review"></textarea>
+            </mat-form-field>
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button color="primary"
+            class="save-button"
+            (click)="matDialogRef.close(eventForm)"
+            [disabled]="eventForm.invalid"
+            aria-label="ADD">
+            Update
+        </button>
+
+    </div>
+</div>
