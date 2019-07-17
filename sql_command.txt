@@ -1,6 +1,0 @@
-ALTER TABLE `membership_type` ADD COLUMN `status` TINYINT(2) UNSIGNED DEFAULT 1 NULL AFTER `name`; 
-ALTER TABLE `users` ADD COLUMN `verify_code` TINYTEXT NULL AFTER `status`; 
-
-// 2019-07-16 added by Li for giving review.
-ALTER TABLE `school_course_date_attend` ADD COLUMN `review` TEXT NULL AFTER `deleted_at`; 
-ALTER TABLE `school_course_date_attend` ADD COLUMN `score` DOUBLE NULL AFTER `review`; 
